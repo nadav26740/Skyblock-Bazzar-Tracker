@@ -169,7 +169,7 @@ namespace Skyblock_Bazzar_Tracker
                 Column_SeriesCollection[CurrentPricePill].Values.Add(products[i].Total_Current_price);
                 Column_SeriesCollection[MarginPill].Values.Add( (double)Math.Abs(products[i].Total_Current_price - products[i].Total_Buy_price));
             }
-
+            
 
             Balance_Gauge.Value = (total_sell_prices / total_buy_prices * 100) - 100;
             Profit_Label.Content = "Profit: " + (total_sell_prices - total_buy_prices).ToString("N");
@@ -226,6 +226,22 @@ namespace Skyblock_Bazzar_Tracker
                 Debug.WriteLine("Failed to find: " + Item_Id_Textbox.Text);
                 MessageBox.Show("Failed to find " + Item_Id_Textbox.Text);
             }
+        }
+
+        private void Remove_track_clicked(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (products[i].Product_name == Item_to_delete.Text)
+                {
+                    products.RemoveAt(i);
+                    Update_Charts();
+                    Item_to_delete.Text = "";
+                    return;
+                }
+            }
+            MessageBox.Show("Tracker Not Found");
+            Debug.WriteLine(Item_to_delete.Text + " Tracker not found");
         }
     }
 }
