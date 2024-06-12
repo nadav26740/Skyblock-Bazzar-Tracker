@@ -142,6 +142,10 @@ namespace Skyblock_Bazzar_Tracker
         public void Update_Charts()
         {
             double total_buy_prices = 0, total_sell_prices = 0;
+            if (products.Count == 0) 
+            {
+                return;
+            }
 
             for (int i = 0; i < Column_SeriesCollection.Count; i++)
             {

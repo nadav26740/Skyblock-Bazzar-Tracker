@@ -192,7 +192,7 @@
                                     BorderBrush="#16a085" BorderThickness="3"
                                 Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" MaxWidth="350" Margin="10">
                                 <lvc:AngularGauge x:Name="Balance_Gauge" Grid.Row="0" Margin="20"
-                                        Value="100" FromValue="-100" ToValue="100" 
+                                        Value="0" FromValue="-100" ToValue="100" 
                                         LabelsStep="20" TicksStep="20" Wedge="300"
                                         TicksForeground="GhostWhite" Foreground="White" 
                                         FontWeight="Bold" FontSize="16"
@@ -231,7 +231,7 @@
                                 <Border Margin="15" CornerRadius="20" BorderThickness="4"
                                         BorderBrush="#52b788" Background="#2b2d42">
                                     <Label x:Name="Income_Label"
-                                           Content="income: 13,300,000,000" FontSize="30"
+                                           Content="No Products" FontSize="30"
                                            Foreground="#edf2f4" HorizontalAlignment="Center"
                                            VerticalAlignment="Center" FontFamily="Aharoni"
                                            FontWeight="Bold"/>
@@ -240,7 +240,7 @@
                                 <Border Margin="15" CornerRadius="20" BorderThickness="4" Grid.Row="1"
                                         BorderBrush="#d90429" Background="#2b2d42">
                                     <Label x:Name="Outcome_label"
-                                           Content="outcome: 13,300,000,000" FontSize="30"
+                                           Content="No Products" FontSize="30"
                                            Foreground="#edf2f4" HorizontalAlignment="Center"
                                            VerticalAlignment="Center" FontFamily="Aharoni"
                                            FontWeight="Bold"/>
@@ -249,7 +249,7 @@
                                 <Border Margin="15" CornerRadius="20" BorderThickness="4" Grid.Row="2"
                                         BorderBrush="#f48c06" Background="#2b2d42">
                                     <Label x:Name="Profit_Label"
-                                           Content="Profit: 13,300,000,000" FontSize="30"
+                                           Content="No Products" FontSize="30"
                                            Foreground="#edf2f4" HorizontalAlignment="Center"
                                            VerticalAlignment="Center" FontFamily="Aharoni"
                                            FontWeight="Bold"/>
