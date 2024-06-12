@@ -77,10 +77,6 @@ namespace Skyblock_Bazzar_Tracker
             Column_Formatter = value => value.ToString("N");
             Balance_Gauge.LabelFormatter = value => value.ToString() + "%";
 
-            // for testing
-            products.Add(new Product { Current_price = 15000000, Buy_price = 12_100_000, Product_id = "STOCK_OF_STONKS", Product_name = "Stock of Stonks" });
-
-
             Loaded += TasksAfterLoaded;
             Closing += TasksShutdown;
         }
