@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Skyblock_Bazzar_Tracker</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AnalysisLevel>none</AnalysisLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="images - Copy\**" />
+    <Compile Remove="images\**" />
+    <EmbeddedResource Remove="images - Copy\**" />
+    <EmbeddedResource Remove="images\**" />
+    <None Remove="images - Copy\**" />
+    <None Remove="images\**" />
+    <Page Remove="images - Copy\**" />
+    <Page Remove="images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Bazaar_Head.webp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.NetCore" Version="0.9.8" />
+    <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Bazaar_Head.webp" />
+  </ItemGroup>
+
+</Project>
