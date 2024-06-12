@@ -21,7 +21,7 @@ namespace Skyblock_Bazzar_Tracker
             Debug.WriteLine("API key: " + api_key);
         }   
 
-        async public Task<Dictionary<string, Products_api_info>> Debug_Check_api()
+        async public Task<Dictionary<string, Products_api_info>> GetCurrent_bazzar()
         {
             Hypixel_Api_answer answer_json;
             HttpClient client = new HttpClient();

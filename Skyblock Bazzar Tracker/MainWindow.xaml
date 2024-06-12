@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Skyblock_Bazzar_Tracker"
         mc:Ignorable="d"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-        Title="MainWindow" MinHeight="900" MinWidth="1600" Background="#293232">
+        Title="MainWindow" MinHeight="900" MinWidth="1600" Background="#FF202B35">
     <Window.Resources>
         <SolidColorBrush x:Key="Frames_background" Color="#2c3e50"/>
         <SolidColorBrush x:Key="Frames_border_color" Color="#3498db"/>
         <SolidColorBrush x:Key="Secondry_Background_Color" Color="#343a40"/>
-        <SolidColorBrush x:Key="Primary_Background_Color" Color="#293232"/>
+        <SolidColorBrush x:Key="Primary_Background_Color" Color="#FF202B35"/>
         <SolidColorBrush x:Key="Secondry_Background_Border_color" Color="#535c66"/>
     </Window.Resources>
     
@@ -119,7 +119,8 @@
                                 Background="#2b2d42" BorderBrush="#52b788"
                                 Content="Add Order" Foreground="WhiteSmoke"
                                 FontSize="25" FontWeight="Bold"
-                                FontFamily="Aharoni"/>
+                                FontFamily="Aharoni"
+                                Click="Add_order_clicked"/>
                     </Grid>
 
                 </Border>
@@ -212,7 +213,8 @@
                             <Border Background="#34495E" Grid.Row="1" Margin="10"
                                     CornerRadius="25" BorderThickness="4"
                                     BorderBrush="#2ecc71">
-                                <Label Content="Profit Gauge" HorizontalAlignment="Center"
+                                <Label Content="Profit Gauge" x:Name="Profit_Title"
+                                       HorizontalAlignment="Center"
                                        VerticalAlignment="Center" FontSize="25"
                                        FontFamily="Aharoni" Foreground="#ecf0f1"/>
                             </Border>
