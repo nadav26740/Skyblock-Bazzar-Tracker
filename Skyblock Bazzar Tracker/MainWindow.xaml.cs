@@ -51,7 +51,9 @@ namespace Skyblock_Bazzar_Tracker
                 {
                     Title = "Buy price",
                     Values = new ChartValues<double> (),
-                    Fill = new BrushConverter().ConvertFrom("#FFD8102B") as SolidColorBrush                
+                    Fill = new BrushConverter().ConvertFrom("#5FD8102B") as SolidColorBrush,
+                    Stroke = new BrushConverter().ConvertFrom("#FFD8102B") as SolidColorBrush,
+                    StrokeThickness = 2
                 }
             };
 
@@ -60,15 +62,18 @@ namespace Skyblock_Bazzar_Tracker
             {
                 Title = "Current Price",
                 Values = new ChartValues<double>(),
-                Fill = new BrushConverter().ConvertFrom("#FF87F53E") as SolidColorBrush
-
+                Fill = new BrushConverter().ConvertFrom("#5F87F53E") as SolidColorBrush,
+                Stroke = new BrushConverter().ConvertFrom("#FF87F53E") as SolidColorBrush,
+                StrokeThickness = 2
             });
 
             Column_SeriesCollection.Add(new ColumnSeries
             {
                 Title = "Margin",
                 Values = new ChartValues<double>(),
-                Fill = new BrushConverter().ConvertFrom("#F8A725") as SolidColorBrush
+                Fill = new BrushConverter().ConvertFrom("#5FF8A725") as SolidColorBrush,
+                Stroke = new BrushConverter().ConvertFrom("#FFF8A725") as SolidColorBrush,
+                StrokeThickness = 2
 
             });
 
@@ -83,7 +88,7 @@ namespace Skyblock_Bazzar_Tracker
 
         void TasksAfterLoaded(object sender, RoutedEventArgs e)
         {
-            Automatic_Reload_Timer = new Timer(Reload_function, null, 0, MinutesToMillisecond(2));
+            Automatic_Reload_Timer = new Timer(Reload_function, null, 0, MinutesToMillisecond(0.5));
         }
 
         int MinutesToMillisecond(double minutes)
