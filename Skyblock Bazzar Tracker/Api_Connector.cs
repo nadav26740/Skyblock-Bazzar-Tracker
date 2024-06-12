@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
@@ -20,12 +21,34 @@ namespace Skyblock_Bazzar_Tracker
             Debug.WriteLine("API key: " + api_key);
         }   
 
-        async public Task<json> Debug_Check_api()
+        async public Task<Dictionary<string, Products_api_info>> Debug_Check_api()
         {
+            Hypixel_Api_answer answer_json;
             HttpClient client = new HttpClient();
-            var response =  await client.GetAsync(@"https://api.hypixel.net/v2/skyblock/bazaar");
+            var response = await client.GetAsync(@"https://api.hypixel.net/v2/skyblock/bazaar");
+            if (!response.IsSuccessStatusCode)
+            {
+                Debug.WriteLine($"Failed Api response code: {response.StatusCode}");
+                return null;
+            }
+
             string json_response = await response.Content.ReadAsStringAsync();
             Debug.WriteLine($"Response status:{response.StatusCode}\nResponse Length: {json_response.Length} ");
+            try
+            {
+                answer_json = JsonConvert.DeserializeObject<Hypixel_Api_answer>(json_response);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("ERROR!!!! = " + ex.Message);
+                throw ex;
+            }
+
+
+            Debug.WriteLine("Found dictonery size: " + answer_json.products.Count);
+
+            return answer_json.products;
+
         }
     }
 }
