@@ -1,14 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Dynamic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
 namespace Skyblock_Bazzar_Tracker
 {
@@ -19,7 +11,7 @@ namespace Skyblock_Bazzar_Tracker
         {
             this.api_key = api_key;
             Debug.WriteLine("API key: " + api_key);
-        }   
+        }
 
         async public Task<Dictionary<string, Products_api_info>> GetCurrent_bazzar()
         {

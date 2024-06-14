@@ -1,18 +1,9 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using LiveCharts;
-using LiveCharts.Defaults;
+﻿using LiveCharts;
 using LiveCharts.Wpf;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Media;
 
 namespace Skyblock_Bazzar_Tracker
 {
@@ -81,7 +72,7 @@ namespace Skyblock_Bazzar_Tracker
             //also adding values updates and animates the chart automatically
             Column_Formatter = value => value.ToString("N");
             Balance_Gauge.LabelFormatter = value => value.ToString() + "%";
-            
+
 
             Loaded += TasksAfterLoaded;
             Closing += TasksShutdown;
@@ -148,7 +139,7 @@ namespace Skyblock_Bazzar_Tracker
         public void Update_Charts()
         {
             double total_buy_prices = 0, total_sell_prices = 0;
-            if (products.Count == 0) 
+            if (products.Count == 0)
             {
                 return;
             }
@@ -168,7 +159,7 @@ namespace Skyblock_Bazzar_Tracker
                 Column_Labels[i] = products[i].Product_name;
                 Column_SeriesCollection[BuyPricePill].Values.Add(products[i].Total_Buy_price);
                 Column_SeriesCollection[CurrentPricePill].Values.Add(products[i].Total_Current_price);
-                Column_SeriesCollection[MarginPill].Values.Add( (double)Math.Abs(products[i].Total_Current_price - products[i].Total_Buy_price));
+                Column_SeriesCollection[MarginPill].Values.Add((double)Math.Abs(products[i].Total_Current_price - products[i].Total_Buy_price));
             }
 
 
@@ -201,7 +192,7 @@ namespace Skyblock_Bazzar_Tracker
                 Debug.WriteLine("Failed to find: " + Item_Id_Textbox.Text);
                 Item_Current_Price_box.Content = "Item id not exists!";
             }
-            
+
         }
 
         private void Add_order_clicked(object sender, RoutedEventArgs e)
