@@ -81,6 +81,7 @@ namespace Skyblock_Bazzar_Tracker
             //also adding values updates and animates the chart automatically
             Column_Formatter = value => value.ToString("N");
             Balance_Gauge.LabelFormatter = value => value.ToString() + "%";
+            
 
             Loaded += TasksAfterLoaded;
             Closing += TasksShutdown;
@@ -169,13 +170,16 @@ namespace Skyblock_Bazzar_Tracker
                 Column_SeriesCollection[CurrentPricePill].Values.Add(products[i].Total_Current_price);
                 Column_SeriesCollection[MarginPill].Values.Add( (double)Math.Abs(products[i].Total_Current_price - products[i].Total_Buy_price));
             }
-            
 
+
+            AxisX_columns.Labels = Column_Labels;
             Balance_Gauge.Value = (total_sell_prices / total_buy_prices * 100) - 100;
             Profit_Label.Content = "Profit: " + (total_sell_prices - total_buy_prices).ToString("N");
             Outcome_label.Content = "Cost: " + total_buy_prices.ToString("N");
             Income_Label.Content = "Worth: " + total_sell_prices.ToString("N");
             Profit_Title.Content = "Profit: " + ((total_sell_prices / total_buy_prices * 100) - 100).ToString("N") + "%";
+            Last_Update_title.Content = "Last Update: " + DateTime.Now.ToString("hh:mm:ss");
+
             DataContext = this;
         }
 

@@ -168,9 +168,15 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label HorizontalAlignment="Left" VerticalAlignment="Center"
-                        Content="Skyblock bazzar tracker" Foreground="Snow"
+                        Content="Skyblock bazzar tracker [Alpha]" Foreground="Snow"
                        FontSize="20" FontFamily="Franklin Gothic Demi"
-                        Grid.Column="1"/>
+                        Grid.Column="1" />
+                <Label HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Content="Last update: 00:00:00" Foreground="Snow"
+                       FontSize="20" FontFamily="Franklin Gothic Demi"
+                        Grid.Column="2" x:Name="Last_Update_title"
+                       Margin="10,0"/>
+
             </Grid>
         </Border>
         <!--#endregion-->
@@ -190,13 +196,13 @@
                 <Border Grid.Column="1" Margin="15" BorderBrush="{StaticResource Frames_border_color}" 
                         BorderThickness="3" CornerRadius="30" Background="{StaticResource Frames_background}">
                     <lvc:CartesianChart Series="{Binding Column_SeriesCollection}"
-                                        Margin="15"
+                                        Margin="15" 
                                         Foreground="#003b3b" LegendLocation="None" >
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Product" Labels="{Binding Column_Labels}"></lvc:Axis>
+                            <lvc:Axis x:Name="AxisX_columns" Title="Product" Labels="{Binding Column_Labels}" Foreground="Snow"/>
                         </lvc:CartesianChart.AxisX>
                         <lvc:CartesianChart.AxisY>
-                            <lvc:Axis Title="Prices" LabelFormatter="{Binding Column_Formatter}"></lvc:Axis>
+                            <lvc:Axis Title="Prices" LabelFormatter="{Binding Column_Formatter}" Foreground="Snow"/>
                         </lvc:CartesianChart.AxisY>
                     </lvc:CartesianChart>
                 </Border>
@@ -246,7 +252,7 @@
                                     CornerRadius="25" BorderThickness="4"
                                     BorderBrush="#2ecc71">
                                 <Label Content="Profit Gauge" x:Name="Profit_Title"
-                                       HorizontalAlignment="Center"
+                                       HorizontalAlignment="Center" FontWeight="Bold"
                                        VerticalAlignment="Center" FontSize="25"
                                        FontFamily="Aharoni" Foreground="#ecf0f1"/>
                             </Border>
