@@ -196,8 +196,8 @@ namespace Skyblock_Bazzar_Tracker
             {
                 Debug.WriteLine("Found - " + Item_Id_Textbox.Text);
                 Item_Name_box.Text = AssistFunctions.ConvertToCamelCase(info.product_id.Replace('_', ' '));
-                Item_Current_Price_box.Content = info.quick_status.buyPrice.ToString("N");
-                Item_Buy_Price_box.Text = info.quick_status.buyPrice.ToString("N");
+                Item_Current_Price_box.Content = info.quick_status.buyPrice.ToString("N") + "p";
+                Item_Buy_Price_box.Text = info.quick_status.sellPrice.ToString("N");
                 Item_amount_box.Text = "1";
             }
             else
