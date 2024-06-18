@@ -131,6 +131,14 @@ namespace Skyblock_Bazzar_Tracker
             }
             catch (Exception ex)
             {
+                this.Dispatcher.Invoke(() => 
+                {
+                    Connection_status_border.BorderBrush = FindResource("OfflineLinearColor") as Brush;
+                    Connection_status_label.Foreground = FindResource("OfflineLinearColor") as Brush;
+                    Connection_status_label.Content = "Status: Offline";
+                }
+                );
+
                 Debug.WriteLine($"Failed to load products {ex.Message}");
             }
             finally { is_requestRunning = false; }
@@ -170,6 +178,11 @@ namespace Skyblock_Bazzar_Tracker
             Income_Label.Content = "Worth: " + total_sell_prices.ToString("N");
             Profit_Title.Content = "Profit: " + ((total_sell_prices / total_buy_prices * 100) - 100).ToString("N") + "%";
             Last_Update_title.Content = "Last Update: " + DateTime.Now.ToString("hh:mm:ss");
+
+            Connection_status_border.BorderBrush = FindResource("OnlineLinearColor") as Brush;
+            Connection_status_label.Content = "Status: Online";
+            Connection_status_label.Foreground = FindResource("OnlineLinearColor") as Brush;
+
 
             DataContext = this;
         }

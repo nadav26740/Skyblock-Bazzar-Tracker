@@ -13,6 +13,16 @@
         <SolidColorBrush x:Key="Secondry_Background_Color" Color="#343a40"/>
         <SolidColorBrush x:Key="Primary_Background_Color" Color="#FF202B35"/>
         <SolidColorBrush x:Key="Secondry_Background_Border_color" Color="#535c66"/>
+        <!--#region Server Status -->
+        <LinearGradientBrush x:Key="OnlineLinearColor" StartPoint="0,0" EndPoint="0,1.35">
+            <GradientStop Color="#FF5FEA22"/>
+            <GradientStop Color="#FF44AD4A" Offset="0.7"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="OfflineLinearColor" StartPoint="0,0" EndPoint="0,1.35">
+            <GradientStop Color="#FFDC2043"/>
+            <GradientStop Color="#FFDA6060" Offset="0.7"/>
+        </LinearGradientBrush>
+        <!--#endregion-->
     </Window.Resources>
 
     <Grid>
@@ -160,10 +170,11 @@
         </Border>
         <!--#endregion-->
         <!--#region Top Bar-->
-        <Border Background="{StaticResource Primary_Background_Color}" Grid.Column="1">
+        <Border Background="{StaticResource Primary_Background_Color}" Grid.Column="1" Height="40">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
@@ -174,8 +185,19 @@
                 <Label HorizontalAlignment="Right" VerticalAlignment="Center"
                         Content="Last update: 00:00:00" Foreground="Snow"
                        FontSize="20" FontFamily="Franklin Gothic Demi"
-                        Grid.Column="2" x:Name="Last_Update_title"
+                        Grid.Column="3" x:Name="Last_Update_title"
                        Margin="10,0"/>
+                
+                <!--#region Online Status!-->
+                <Border Grid.Column="2" CornerRadius="10" BorderBrush="{StaticResource OnlineLinearColor}"
+                        Height="35" HorizontalAlignment="Center" Width="250"
+                        BorderThickness="2" x:Name="Connection_status_border">
+                    <Label Content="Status: Online" FontSize="16" FontWeight="Bold"
+                           HorizontalAlignment="Center" Foreground="{StaticResource OnlineLinearColor}"
+                           x:Name="Connection_status_label"/>
+
+                </Border>
+                <!--#endregion-->
 
             </Grid>
         </Border>
