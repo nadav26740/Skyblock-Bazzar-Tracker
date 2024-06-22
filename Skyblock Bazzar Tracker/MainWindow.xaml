@@ -16,7 +16,7 @@
         <!--#region Server Status -->
         <LinearGradientBrush x:Key="OnlineLinearColor" StartPoint="0,0" EndPoint="0,1.35">
             <GradientStop Color="#FF5FEA22"/>
-            <GradientStop Color="#FF44AD4A" Offset="0.7"/>
+            <GradientStop Color="#FF69EC9B" Offset="0.7"/>
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="OfflineLinearColor" StartPoint="0,0" EndPoint="0,1.35">
             <GradientStop Color="#FFDC2043"/>

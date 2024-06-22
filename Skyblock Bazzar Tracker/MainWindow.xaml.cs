@@ -131,7 +131,7 @@ namespace Skyblock_Bazzar_Tracker
             }
             catch (Exception ex)
             {
-                this.Dispatcher.Invoke(() => 
+                this.Dispatcher.Invoke(() =>
                 {
                     Connection_status_border.BorderBrush = FindResource("OfflineLinearColor") as Brush;
                     Connection_status_label.Foreground = FindResource("OfflineLinearColor") as Brush;
@@ -197,7 +197,7 @@ namespace Skyblock_Bazzar_Tracker
                 Debug.WriteLine("Found - " + Item_Id_Textbox.Text);
                 Item_Name_box.Text = AssistFunctions.ConvertToCamelCase(info.product_id.Replace('_', ' '));
                 Item_Current_Price_box.Content = info.quick_status.buyPrice.ToString("N") + "p";
-                Item_Buy_Price_box.Text = info.quick_status.sellPrice.ToString("N");
+                Item_Buy_Price_box.Text = info.sell_summary[0].pricePerUnit.ToString("N");
                 Item_amount_box.Text = "1";
             }
             else
