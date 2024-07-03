@@ -36,7 +36,7 @@ namespace Skyblock_Bazzar_Tracker
 
             f_fileDialog.Multiselect = false;
             f_fileDialog.Title = "Open Saved trackers";
-            f_fileDialog.Filter = "Json Files (.json)|*.json";
+            f_fileDialog.Filter = "Json Files|*.json";
             bool? dialog_return = f_fileDialog.ShowDialog();
 
             if (dialog_return.HasValue == false || dialog_return.Value == false) { return; }

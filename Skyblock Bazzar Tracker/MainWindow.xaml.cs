@@ -80,13 +80,18 @@ namespace Skyblock_Bazzar_Tracker
 
         void TasksAfterLoaded(object sender, RoutedEventArgs e)
         {
+            ImportFromFile();
+            Automatic_Reload_Timer = new Timer(Reload_function, null, 0, MinutesToMillisecond(0.5));
+        }
+
+        void ImportFromFile()
+        {
             LoadTrackersDialog loader = new LoadTrackersDialog();
             bool? loader_status = loader.ShowDialog();
             if (loader_status.HasValue && loader_status.Value)
             {
-                 products = loader.save_data_Results.Products;
+                products = loader.save_data_Results.Products;
             }
-            Automatic_Reload_Timer = new Timer(Reload_function, null, 0, MinutesToMillisecond(0.5));
         }
 
         int MinutesToMillisecond(double minutes)
