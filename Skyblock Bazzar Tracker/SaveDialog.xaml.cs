@@ -40,7 +40,7 @@ namespace Skyblock_Bazzar_Tracker
             SaveFileDialog f_fileDialog = new SaveFileDialog();
             JsonSaveFile json_data = new JsonSaveFile();
 
-            f_fileDialog.Filter = "Json Files|.json";
+            f_fileDialog.Filter = "Json Files (.json)|*.json";
             f_fileDialog.Title = "Save Location";
             bool? dialog_return = f_fileDialog.ShowDialog();
 
