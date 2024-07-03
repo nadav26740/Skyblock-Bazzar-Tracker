@@ -8,6 +8,22 @@
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         Title="Skyblock bazzar tracker" MinHeight="950" MinWidth="1600" Background="#FF202B35">
     <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="ButtonControlTemplate">
+            <Border Background="{TemplateBinding Background}" CornerRadius="10"
+            BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </ControlTemplate>
+
+        <Style TargetType="Button" x:Key="ButtonStyle">
+            <Setter Property="Background" Value="#2b2d42"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF647590"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
         <SolidColorBrush x:Key="Frames_background" Color="#2c3e50"/>
         <SolidColorBrush x:Key="Frames_border_color" Color="#3498db"/>
         <SolidColorBrush x:Key="Secondry_Background_Color" Color="#343a40"/>
@@ -73,7 +89,8 @@
                         Grid.Row="2">
                             <TextBox Background="Transparent" VerticalAlignment="Center"
                              FontSize="30" Margin="10"
-                             FontFamily="Aharoni"
+                             FontFamily="Aharoni" 
+                             BorderThickness="0,0,0,2"
                              x:Name="Item_Id_Textbox" LostFocus="Item_Id_Textbox_LostFocus"/>
                         </Border>
 
@@ -87,6 +104,7 @@
                             <TextBox Background="Transparent" VerticalAlignment="Center"
                              FontSize="30" Margin="10"
                              FontFamily="Aharoni"
+                             BorderThickness="0,0,0,2"
                              x:Name="Item_Name_box"/>
                         </Border>
 
@@ -98,9 +116,10 @@
                         Margin="10,0" Height="60" CornerRadius="20"
                         Grid.Row="6">
                             <TextBox Background="Transparent" VerticalAlignment="Center"
-                             FontSize="30" Margin="10"
-                             FontFamily="Aharoni"
-                             x:Name="Item_Buy_Price_box"/>
+                                     FontSize="30" Margin="10"
+                                     FontFamily="Aharoni"
+                                     BorderThickness="0,0,0,2"
+                                     x:Name="Item_Buy_Price_box"/>
                         </Border>
 
                         <Label Content="Amount to buy" Grid.Row="7"
@@ -111,9 +130,10 @@
                         Margin="10,0" Height="60" CornerRadius="20"
                         Grid.Row="8">
                             <TextBox Background="Transparent" VerticalAlignment="Center"
-                             FontSize="30" Margin="10"
-                             FontFamily="Aharoni"
-                             x:Name="Item_amount_box"/>
+                                     FontSize="30" Margin="10"
+                                     FontFamily="Aharoni"
+                                     BorderThickness="0,0,0,2"
+                                     x:Name="Item_amount_box"/>
                         </Border>
 
                         <Label Content="Item Current sell price" Grid.Row="9"
@@ -130,11 +150,14 @@
                              x:Name="Item_Current_Price_box"/>
                         </Border>
                         <Button Grid.Row="11" VerticalAlignment="Top" Height="50" Margin="20,0"
-                                Background="#2b2d42" BorderBrush="#52b788"
+                                BorderBrush="#52b788"
                                 Content="Add Track" Foreground="WhiteSmoke"
                                 FontSize="25" FontWeight="Bold"
                                 FontFamily="Aharoni"
-                                Click="Add_order_clicked"/>
+                                Click="Add_order_clicked"
+                                Template="{StaticResource ButtonControlTemplate}"
+                                Style="{StaticResource ButtonStyle}">
+                        </Button>
                     </Grid>
 
                 </Border>
@@ -158,11 +181,14 @@
                              x:Name="Item_to_delete"/>
                         </Border>
                         <Button Grid.Row="11" VerticalAlignment="Center" Height="40" Margin="20,0"
-                                Background="#2b2d42" BorderBrush="#52b788"
+                                BorderBrush="#52b788"
                                 Content="Remove Track" Foreground="WhiteSmoke"
                                 FontSize="25" FontWeight="Bold"
                                 FontFamily="Aharoni"
-                                Click="Remove_track_clicked"/>
+                                Click="Remove_track_clicked"
+                                Template="{StaticResource ButtonControlTemplate}"
+                                Style="{StaticResource ButtonStyle}"/>
+
 
                     </Grid>
                 </Border>
@@ -252,7 +278,7 @@
                                     BorderBrush="#16a085" BorderThickness="3"
                                 Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" MaxWidth="350" Margin="10">
                                 <lvc:AngularGauge x:Name="Balance_Gauge" Grid.Row="0" Margin="20"
-                                        Value="0" FromValue="-100" ToValue="100" 
+                                        Value="-100" FromValue="-100" ToValue="100" 
                                         LabelsStep="20" TicksStep="20" Wedge="300"
                                         TicksForeground="GhostWhite" Foreground="White" 
                                         FontWeight="Bold" FontSize="16"
