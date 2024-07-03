@@ -33,7 +33,6 @@ namespace Skyblock_Bazzar_Tracker
         public MainWindow()
         {
             InitializeComponent();
-
             // init the objects
             products = new List<Product>();
             Column_SeriesCollection = new SeriesCollection
@@ -78,6 +77,7 @@ namespace Skyblock_Bazzar_Tracker
             Closing += TasksShutdown;
         }
 
+
         void TasksAfterLoaded(object sender, RoutedEventArgs e)
         {
             Automatic_Reload_Timer = new Timer(Reload_function, null, 0, MinutesToMillisecond(0.5));
@@ -91,6 +91,7 @@ namespace Skyblock_Bazzar_Tracker
         private void TasksShutdown(object? sender, CancelEventArgs args)
         {
             Automatic_Reload_Timer.Dispose();
+            new SaveDialog().ShowDialog();
         }
 
         private void Reload_function(object timer_obj)
