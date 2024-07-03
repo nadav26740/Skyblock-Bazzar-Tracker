@@ -87,6 +87,7 @@ namespace Skyblock_Bazzar_Tracker
         void ImportFromFile()
         {
             LoadTrackersDialog loader = new LoadTrackersDialog();
+            loader.Owner = this;
             bool? loader_status = loader.ShowDialog();
             if (loader_status.HasValue && loader_status.Value)
             {
@@ -104,7 +105,9 @@ namespace Skyblock_Bazzar_Tracker
             Automatic_Reload_Timer.Dispose();
             if (products.Count > 0)
             {
-                new SaveDialog(products).ShowDialog();
+                Window window_dialog = new SaveDialog(products);
+                window_dialog.Owner = this;
+                window_dialog.ShowDialog();
             }
         }
 

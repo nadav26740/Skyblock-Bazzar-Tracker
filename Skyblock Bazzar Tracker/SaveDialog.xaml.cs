@@ -1,19 +1,8 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Skyblock_Bazzar_Tracker
 {
@@ -53,7 +42,7 @@ namespace Skyblock_Bazzar_Tracker
             }
 
             Stream save_file_stream = f_fileDialog.OpenFile();
-            
+
             save_file_stream.Write(Encoding.GetEncoding("UTF-8").GetBytes(JsonConvert.SerializeObject(json_data)));
             save_file_stream.Close();
             this.Close();

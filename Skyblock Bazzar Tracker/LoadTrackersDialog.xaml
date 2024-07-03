@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Skyblock_Bazzar_Tracker"
                 mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
-        Background="Transparent" WindowStartupLocation="CenterScreen"
+        Background="Transparent" WindowStartupLocation="CenterOwner"
         Title="LoadDialog" Height="250" Width="450">
     <Border BorderThickness="2" CornerRadius="35">
         <Border.BorderBrush>
