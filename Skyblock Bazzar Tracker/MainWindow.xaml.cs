@@ -91,7 +91,10 @@ namespace Skyblock_Bazzar_Tracker
         private void TasksShutdown(object? sender, CancelEventArgs args)
         {
             Automatic_Reload_Timer.Dispose();
-            new SaveDialog().ShowDialog();
+            if (products.Count > 0)
+            {
+                new SaveDialog(products).ShowDialog();
+            }
         }
 
         private void Reload_function(object timer_obj)
@@ -148,17 +151,14 @@ namespace Skyblock_Bazzar_Tracker
         public void Update_Charts()
         {
             double total_buy_prices = 0, total_sell_prices = 0;
-            if (products.Count == 0)
-            {
-                return;
-            }
+
+            Column_Labels = new string[products.Count];
+
 
             for (int i = 0; i < Column_SeriesCollection.Count; i++)
             {
                 Column_SeriesCollection[i].Values.Clear();
             }
-
-            Column_Labels = new string[products.Count];
 
             for (int i = 0; i < products.Count; i++)
             {
@@ -169,6 +169,13 @@ namespace Skyblock_Bazzar_Tracker
                 Column_SeriesCollection[BuyPricePill].Values.Add(products[i].Total_Buy_price);
                 Column_SeriesCollection[CurrentPricePill].Values.Add(products[i].Total_Current_price);
                 Column_SeriesCollection[MarginPill].Values.Add((double)Math.Abs(products[i].Total_Current_price - products[i].Total_Buy_price));
+            }
+
+            if (products.Count == 0)
+            {
+                DataContext = this;
+                total_buy_prices = 0.0001;
+                total_sell_prices = 0.0001;
             }
 
 
@@ -239,18 +246,23 @@ namespace Skyblock_Bazzar_Tracker
 
         private void Remove_track_clicked(object sender, RoutedEventArgs e)
         {
+            bool found = false;
             for (int i = 0; i < products.Count; i++)
             {
                 if (products[i].Product_name == Item_to_delete.Text)
                 {
+                    found = true;
                     products.RemoveAt(i);
-                    Update_Charts();
                     Item_to_delete.Text = "";
-                    return;
                 }
             }
+
+            if (found)
+            {
+                Update_Charts();
+                return;
+            }
             MessageBox.Show("Tracker Not Found");
-            Debug.WriteLine(Item_to_delete.Text + " Tracker not found");
         }
     }
 }
