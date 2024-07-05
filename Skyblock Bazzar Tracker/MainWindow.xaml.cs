@@ -212,7 +212,7 @@ namespace Skyblock_Bazzar_Tracker
         private void Item_Id_Textbox_LostFocus(object sender, RoutedEventArgs e)
         {
             Products_api_info? info;
-            if (Item_Id_Textbox.Text == null)
+            if (products_dict == null)
                 return;
 
             // check if item is exists
