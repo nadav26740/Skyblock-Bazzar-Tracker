@@ -86,7 +86,7 @@ namespace Skyblock_Bazzar_Tracker
 
         private void List_view_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            key_selected = keys_dict[((sender as ListView).SelectedItem as string)];
+            key_selected = keys_dict[((sender as ListView).SelectedItem as string).ToLower()];
             DialogResult = true;
             this.Close();
         }
