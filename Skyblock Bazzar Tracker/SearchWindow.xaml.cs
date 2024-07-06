@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Skyblock_Bazzar_Tracker
 {
@@ -55,7 +45,7 @@ namespace Skyblock_Bazzar_Tracker
             this.Dispatcher.Invoke(() =>
             {
                 List_view.Items.Clear();
-                start_search_key = search_box.Text; 
+                start_search_key = search_box.Text;
             });
 
             foreach (string key in keys_dict.Keys)

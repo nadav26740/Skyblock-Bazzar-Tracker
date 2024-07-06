@@ -87,7 +87,7 @@ namespace Skyblock_Bazzar_Tracker
         void TasksAfterLoaded(object sender, RoutedEventArgs e)
         {
             ImportFromFile();
-            
+
             // tests
             // /tests
 
@@ -131,7 +131,7 @@ namespace Skyblock_Bazzar_Tracker
         {
             Debug.WriteLine("Creating search dict");
             Dictionary<string, string> all_items = new Dictionary<string, string>();
-            
+
             foreach (var item in products_dict)
             {
                 all_items.Add(item.Key.ToLower().Replace('_', ' '), item.Key);
@@ -297,11 +297,11 @@ namespace Skyblock_Bazzar_Tracker
                 }
                 catch (FormatException ex)
                 {
-                    Debug.WriteLine("Unable to add - " + ex.Message );
+                    Debug.WriteLine("Unable to add - " + ex.Message);
                     MessageBox.Show("Invalid format!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                
+
                 Item_Name_box.Text = "";
                 Item_Current_Price_box.Content = "";
                 Item_Buy_Price_box.Text = "";
