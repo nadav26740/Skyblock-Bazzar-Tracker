@@ -20,6 +20,7 @@ namespace Skyblock_Bazzar_Tracker
         public List<Product> products { get; set; }
 
         Timer Automatic_Reload_Timer;
+        int pressed_column_index = -1;
 
         private const int MarginPill = 2;
         private const int CurrentPricePill = 1;
@@ -199,7 +200,7 @@ namespace Skyblock_Bazzar_Tracker
             Outcome_label.Content = "Cost: " + total_buy_prices.ToString("N");
             Income_Label.Content = "Worth: " + total_sell_prices.ToString("N");
             Profit_Title.Content = "Profit: " + ((total_sell_prices / total_buy_prices * 100) - 100).ToString("N") + "%";
-            Last_Update_title.Content = "Last Update: " + DateTime.Now.ToString("hh:mm:ss");
+            Last_Update_title.Content = "Last Update: " + DateTime.Now.ToString("HH:mm:ss");
 
             Connection_status_border.BorderBrush = FindResource("OnlineLinearColor") as Brush;
             Connection_status_label.Content = "Status: Online";
@@ -262,23 +263,23 @@ namespace Skyblock_Bazzar_Tracker
 
         private void Remove_track_clicked(object sender, RoutedEventArgs e)
         {
-            bool found = false;
-            for (int i = 0; i < products.Count; i++)
+            if (pressed_column_index == -1)
             {
-                if (products[i].Product_name == Item_to_delete.Text)
-                {
-                    found = true;
-                    products.RemoveAt(i);
-                    Item_to_delete.Text = "";
-                }
-            }
-
-            if (found)
-            {
-                Update_Charts();
                 return;
             }
-            MessageBox.Show("Tracker Not Found");
+
+            products.RemoveAt(pressed_column_index);
+            Item_to_delete.Text = "";
+            pressed_column_index = -1;
+
+            Update_Charts();
+            return;
+        }
+
+        private void CartesianChart_DataClick(object sender, ChartPoint chartPoint)
+        {
+            pressed_column_index = (int)chartPoint.X;
+            Item_to_delete.Text = products[pressed_column_index].Product_name;
         }
     }
 }
