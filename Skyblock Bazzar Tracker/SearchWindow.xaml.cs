@@ -58,12 +58,12 @@ namespace Skyblock_Bazzar_Tracker
                     }
                 });
 
-                if (key.Contains(start_search_key))
+                if (key.Contains(start_search_key.ToLower()))
                 {
                     counter++;
                     this.Dispatcher.Invoke(() =>
                     {
-                        List_view.Items.Add(key);
+                        List_view.Items.Add(AssistFunctions.ConvertToCamelCase(key));
                     });
                     Debug.WriteLine("Key found: " + key);
                     if (counter > 6)
