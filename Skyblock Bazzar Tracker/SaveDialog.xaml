@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Skyblock_Bazzar_Tracker"
+        xmlns:local="clr-namespace:Skyblock_Bazzar_Tracker" ShowInTaskbar="False"
         mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
         Background="Transparent" WindowStartupLocation="CenterOwner"
         Title="SaveDialog" Height="250" Width="450">

@@ -22,6 +22,9 @@ namespace Skyblock_Bazzar_Tracker
         Timer Automatic_Reload_Timer;
         int pressed_column_index = -1;
 
+        // can be null!
+        Dictionary<string, string> Search_window_dict;
+
         private const int MarginPill = 2;
         private const int CurrentPricePill = 1;
         private const int BuyPricePill = 0;
@@ -34,6 +37,7 @@ namespace Skyblock_Bazzar_Tracker
         public MainWindow()
         {
             InitializeComponent();
+
             // init the objects
             products = new List<Product>();
             Column_SeriesCollection = new SeriesCollection
@@ -76,12 +80,17 @@ namespace Skyblock_Bazzar_Tracker
 
             Loaded += TasksAfterLoaded;
             Closing += TasksShutdown;
+            Closed += (object sender, EventArgs args) => { App.Current.Shutdown(); };
         }
 
 
         void TasksAfterLoaded(object sender, RoutedEventArgs e)
         {
             ImportFromFile();
+            
+            // tests
+            // /tests
+
             Automatic_Reload_Timer = new Timer(Reload_function, null, 0, MinutesToMillisecond(0.5));
         }
 
@@ -110,12 +119,31 @@ namespace Skyblock_Bazzar_Tracker
                 window_dialog.Owner = this;
                 window_dialog.ShowDialog();
             }
+
         }
 
         private void Reload_function(object timer_obj)
         {
             new Task(LoadProducts_current_values).Start();
         }
+
+        private void CreateSearchWindowDictonary()
+        {
+            Debug.WriteLine("Creating search dict");
+            Dictionary<string, string> all_items = new Dictionary<string, string>();
+            
+            foreach (var item in products_dict)
+            {
+                all_items.Add(item.Key.ToLower().Replace('_', ' '), item.Key);
+            }
+
+            Debug.WriteLine($"Search dict has been created with {all_items.Count} items in it");
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                Search_window_dict = (all_items);
+            }));
+        }
+
 
         public async void LoadProducts_current_values()
         {
@@ -129,6 +157,12 @@ namespace Skyblock_Bazzar_Tracker
             {
                 products_dict = await api_communicator.GetCurrent_bazzar();
                 Products_api_info? info;
+
+                if (Search_window_dict == null)
+                {
+                    CreateSearchWindowDictonary();
+                }
+
 
                 for (int i = 0; i < products.Count; i++)
                 {
@@ -212,6 +246,11 @@ namespace Skyblock_Bazzar_Tracker
 
         private void Item_Id_Textbox_LostFocus(object sender, RoutedEventArgs e)
         {
+            AutoComplete_fields();
+        }
+
+        private void AutoComplete_fields()
+        {
             Products_api_info? info;
             if (products_dict == null)
                 return;
@@ -222,7 +261,15 @@ namespace Skyblock_Bazzar_Tracker
                 Debug.WriteLine("Found - " + Item_Id_Textbox.Text);
                 Item_Name_box.Text = AssistFunctions.ConvertToCamelCase(info.product_id.Replace('_', ' '));
                 Item_Current_Price_box.Content = info.quick_status.buyPrice.ToString("N") + "p";
-                Item_Buy_Price_box.Text = info.sell_summary[0].pricePerUnit.ToString("N");
+                if (info.sell_summary.Length > 0)
+                {
+                    Item_Buy_Price_box.Text = info.sell_summary[0].pricePerUnit.ToString("N");
+                }
+                else
+                {
+                    Item_Buy_Price_box.Text = "No Sell Prices";
+                }
+
                 Item_amount_box.Text = "1";
             }
             else
@@ -230,7 +277,6 @@ namespace Skyblock_Bazzar_Tracker
                 Debug.WriteLine("Failed to find: " + Item_Id_Textbox.Text);
                 Item_Current_Price_box.Content = "Item id not exists!";
             }
-
         }
 
         private void Add_order_clicked(object sender, RoutedEventArgs e)
@@ -238,14 +284,24 @@ namespace Skyblock_Bazzar_Tracker
             if (products_dict.ContainsKey(Item_Id_Textbox.Text))
             {
                 Debug.WriteLine("Found - " + Item_Id_Textbox.Text);
-                products.Add(new Product
+                try
                 {
-                    Current_price = 0d,
-                    Buy_price = double.Parse(Item_Buy_Price_box.Text),
-                    Product_id = Item_Id_Textbox.Text,
-                    Product_name = Item_Name_box.Text,
-                    Amount = int.Parse(Item_amount_box.Text)
-                });
+                    products.Add(new Product
+                    {
+                        Current_price = 0d,
+                        Buy_price = double.Parse(Item_Buy_Price_box.Text),
+                        Product_id = Item_Id_Textbox.Text,
+                        Product_name = Item_Name_box.Text,
+                        Amount = int.Parse(Item_amount_box.Text)
+                    });
+                }
+                catch (FormatException ex)
+                {
+                    Debug.WriteLine("Unable to add - " + ex.Message );
+                    MessageBox.Show("Invalid format!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                
                 Item_Name_box.Text = "";
                 Item_Current_Price_box.Content = "";
                 Item_Buy_Price_box.Text = "";
@@ -280,6 +336,22 @@ namespace Skyblock_Bazzar_Tracker
         {
             pressed_column_index = (int)chartPoint.X;
             Item_to_delete.Text = products[pressed_column_index].Product_name;
+        }
+
+        private void Item_Id_Textbox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (Search_window_dict == null)
+            {
+                Debug.WriteLine("Unable to open search window!");
+                return;
+            }
+            SearchWindow search_window = new SearchWindow(Search_window_dict);
+            search_window.Owner = this;
+            if (search_window.ShowDialog() ?? false)
+            {
+                Item_Id_Textbox.Text = search_window.key_selected;
+                AutoComplete_fields();
+            }
         }
     }
 }
