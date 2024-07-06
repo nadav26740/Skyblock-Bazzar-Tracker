@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Skyblock_Bazzar_Tracker"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         Title="Skyblock bazzar tracker" MinHeight="950" MinWidth="1600" Background="#FF202B35">
     <Window.Resources>
@@ -87,11 +87,21 @@
                         <Border Background="GhostWhite" VerticalAlignment="Top"
                         Margin="10,0" Height="60" CornerRadius="20"
                         Grid.Row="2">
-                            <TextBox Background="Transparent" VerticalAlignment="Center"
-                             FontSize="30" Margin="10"
-                             FontFamily="Aharoni" 
-                             BorderThickness="0,0,0,2"
-                             x:Name="Item_Id_Textbox" LostFocus="Item_Id_Textbox_LostFocus"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Background="Transparent" VerticalAlignment="Center"
+                                         FontSize="30" Margin="0,0,10,0"
+                                         FontFamily="Aharoni" Grid.Column="1"
+                                         BorderThickness="0,0,0,2" 
+                                         x:Name="Item_Id_Textbox" LostFocus="Item_Id_Textbox_LostFocus"/>
+                                <Border Margin="5" BorderBrush="GhostWhite" MouseDown="Item_Id_Textbox_MouseDown">
+                                    <Label Content="🔍" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                           FontSize="30" Foreground="SlateGray"/>
+                                </Border>
+                            </Grid>
                         </Border>
 
                         <Label Content="Item Name" Grid.Row="3"
@@ -141,7 +151,7 @@
                        FontWeight="Bold" FontFamily="Aharoni"
                        VerticalAlignment="Bottom" Margin="20,0"/>
                         <Border Background="#2b2d42" VerticalAlignment="Top"
-                        BorderBrush="#52b788" BorderThickness="4"
+                        BorderBrush="{StaticResource OnlineLinearColor}" BorderThickness="3"
                         Margin="10,0" Height="60" CornerRadius="20"
                         Grid.Row="10">
                             <Label Background="Transparent" VerticalAlignment="Center"
@@ -150,7 +160,7 @@
                              x:Name="Item_Current_Price_box"/>
                         </Border>
                         <Button Grid.Row="11" VerticalAlignment="Top" Height="50" Margin="20,0"
-                                BorderBrush="#52b788"
+                                BorderBrush="{StaticResource OnlineLinearColor}"
                                 Content="Add Track" Foreground="WhiteSmoke"
                                 FontSize="25" FontWeight="Bold"
                                 FontFamily="Aharoni"
@@ -171,17 +181,18 @@
                         </Grid.RowDefinitions>
                         <Label Content="Product To Remove(Name)" Grid.Row="0"
                        Foreground="WhiteSmoke" FontSize="15"
-                       FontWeight="Bold" FontFamily="Aharoni" Margin="20,0,20,0"/>
+                       FontWeight="Bold" FontFamily="Aharoni" Margin="20,0"/>
                         <Border Background="GhostWhite" VerticalAlignment="Top"
                         Margin="10,0" Height="50" CornerRadius="20"
                         Grid.Row="1">
                             <TextBox Background="Transparent" VerticalAlignment="Center"
-                             FontSize="30" Margin="10"
-                             FontFamily="Aharoni"
-                             x:Name="Item_to_delete"/>
+                                     FontSize="30" Margin="15,0" BorderThickness="0,0,0,2"
+                                     Opacity="0.75" FontFamily="Aharoni" IsReadOnly="True"
+                                     x:Name="Item_to_delete"/>
                         </Border>
+                        
                         <Button Grid.Row="11" VerticalAlignment="Center" Height="40" Margin="20,0"
-                                BorderBrush="#52b788"
+                                BorderBrush="{StaticResource OfflineLinearColor}"
                                 Content="Remove Track" Foreground="WhiteSmoke"
                                 FontSize="25" FontWeight="Bold"
                                 FontFamily="Aharoni"
@@ -244,7 +255,7 @@
                 <Border Grid.Column="1" Margin="15" BorderBrush="{StaticResource Frames_border_color}" 
                         BorderThickness="3" CornerRadius="30" Background="{StaticResource Frames_background}">
                     <lvc:CartesianChart Series="{Binding Column_SeriesCollection}"
-                                        Margin="15"
+                                        Margin="15" DataClick="CartesianChart_DataClick"
                                         Foreground="#003b3b" LegendLocation="None" >
                         <lvc:CartesianChart.AxisX>
                             <lvc:Axis x:Name="AxisX_columns" Title="Product" Labels="{Binding Column_Labels}" Foreground="Snow"/>
@@ -288,7 +299,9 @@
                                         <lvc:AngularSection FromValue="-100" ToValue="-80" Fill="#d00000" />
                                         <lvc:AngularSection FromValue="-80" ToValue="-10" Fill="#e85d04"/>
                                         <lvc:AngularSection FromValue="-10" ToValue="10" Fill="#ffba08"/>
-                                        <lvc:AngularSection FromValue="10" ToValue="100" Fill="#52b788"/>
+                                        <lvc:AngularSection FromValue="10" ToValue="80" Fill="#52b788"/>
+                                        <lvc:AngularSection FromValue="80" ToValue="100" Fill="#289c69"/>
+
                                     </lvc:AngularGauge.Sections>
                                 </lvc:AngularGauge>
                             </Border>

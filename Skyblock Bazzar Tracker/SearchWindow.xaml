@@ -1,0 +1,39 @@
+﻿<Window x:Class="Skyblock_Bazzar_Tracker.SearchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Skyblock_Bazzar_Tracker" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        mc:Ignorable="d" Background="#FF414E42" AllowsTransparency="True" WindowStyle="None"
+        Title="SearchWindow" Height="300" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Border IsHitTestVisible="False"
+                BorderBrush="#FF4A615F" BorderThickness="2"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center"
+                   Content="🔍" Foreground="Snow" FontSize="25" IsHitTestVisible="False" FontWeight="UltraLight"/>
+            <Label Grid.Column="1" Content="Item to Search" x:Name="textbox_tip"
+                   FontSize="25" FontWeight="Light" Foreground="Snow"
+                   VerticalAlignment="Center" Opacity="0.4" IsHitTestVisible="False">
+            </Label>
+
+            <TextBox x:Name="search_box" Background="Transparent" Grid.Column="1"
+                     Margin="0,5" FontSize="26" FontWeight="Light" 
+                     Foreground="Snow" VerticalAlignment="Center"
+                     BorderThickness="0" TextChanged="search_box_TextChanged"/>
+        </Grid>
+        <ListView Grid.Row="1" Background="Transparent" BorderBrush="#FF4A615F"
+                  x:Name="List_view" FontSize="20" Foreground="Snow" Margin="20,0"
+                  SelectionMode="Single" IsSynchronizedWithCurrentItem="False" MouseDoubleClick="List_view_MouseDoubleClick">
+        </ListView>
+
+    </Grid>
+</Window>
