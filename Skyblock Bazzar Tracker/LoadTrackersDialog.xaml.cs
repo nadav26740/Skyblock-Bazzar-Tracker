@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 
@@ -30,8 +31,17 @@ namespace Skyblock_Bazzar_Tracker
             if (dialog_return.HasValue == false || dialog_return.Value == false) { return; }
 
             StreamReader file_stream = new StreamReader(f_fileDialog.OpenFile());
+            try
+            {
+                save_results_try = JsonConvert.DeserializeObject<JsonSaveFile>(file_stream.ReadToEnd());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in reading save data!");
+                Debug.WriteLine("[Error in json]" + ex.Message);
+                return;
+            }
 
-            save_results_try = JsonConvert.DeserializeObject<JsonSaveFile>(file_stream.ReadToEnd());
             if (save_results_try != null)
             {
                 DialogResult = true;
