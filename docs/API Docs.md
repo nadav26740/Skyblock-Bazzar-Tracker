@@ -1,4 +1,4 @@
-# ** API Documantation **
+# **API Documantation**
 ## **How the system works**
 Skyblock bazzar tracker connecting to the hypixel api and pulling information about the current bazzar prices
 after that the user adding the products he would like to track
@@ -45,4 +45,4 @@ the software getting the current price from what it already picked from the [API
 ## **Class [Api_Connector](../Skyblock%20Bazzar%20Tracker/Api_Connector.cs)**
 *Class that will associate with the API communication*
 * **Constructor Api_Connector() -** Function that currently doing nothing but made for using the API 
-* **GetCurrent_bazzar() -** Async function that getting from the API Response in ***[Hypixel_Api_answer](../Skyblock%20Bazzar%20Tracker/Hypixel_Api_answer.cs) ***and extracting the products out of the response and returning dictonary of all the products and their data
+* **GetCurrent_bazzar() -** Async function that getting from the API Response in ***[Hypixel_Api_answer](../Skyblock%20Bazzar%20Tracker/Hypixel_Api_answer.cs)*** and extracting the products out of the response and returning dictonary of all the products and their data
