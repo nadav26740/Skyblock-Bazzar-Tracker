@@ -27,7 +27,7 @@ the software getting the current price from what it already picked from the [API
     * **double pricePerUnit -** Price Per unit
     * **int orders -** I trully have no idea what orders mean
  
- ### ***Quick_status_class***
+    ### ***Quick_status_class***
     * **string productId    -** Product ID
     * **double sellPrice    -** weighted average of the top 2% of orders by volume
     * **int sellVolume      -** are the sum of item amounts in all orders 
