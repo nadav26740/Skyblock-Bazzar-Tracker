@@ -23,4 +23,4 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build "Skyblock Bazzar Tracker/Skyblock Bazzar Tracker.csproj" -c Release -f:net6.0	 --no-restore
+      run: dotnet build "Skyblock Bazzar Tracker/Skyblock Bazzar Tracker.csproj" -c Release -f:net6.0-windows --no-restore
