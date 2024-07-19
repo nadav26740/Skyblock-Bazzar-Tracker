@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    name: Build
     runs-on: windows-latest
 
     steps:
@@ -25,11 +25,12 @@ jobs:
     - name: Build
       run: dotnet build "Skyblock Bazzar Tracker/Skyblock Bazzar Tracker.csproj" -c Release -f:net6.0-windows --no-restore
   
-  Testing:
+  unittests:
+    name: Running Unit tests
     needs: build
 
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - name: Running UnitTest Tracker_Unittests
-        run: dotnet test .\Tracker_Unittests\Tracker_Unittests.csproj -c:Release -f:net6.0-windows --no-restore
+        run: dotnet test .\Tracker_Unittests\Tracker_Unittests.csproj -c:Release -f:net6.0-windows
