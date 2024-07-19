@@ -33,4 +33,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Running UnitTest Tracker_Unittests
-        run: dotnet test .\Tracker_Unittests\Tracker_Unittests.csproj -c:Release -f:net6.0-windows
+        run: dotnet test .\Tracker_Unittests\Tracker_Unittests.csproj -c:Release -f:net6.0-windows -l "console;verbosity=normal"
