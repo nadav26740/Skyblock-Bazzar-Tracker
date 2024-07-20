@@ -24,4 +24,4 @@ Write the item id in the id box and all the other fields will be filled automati
 on the angular you can see how much percentage of profit you earned
 
 # Dependencies:
-.NET 6 required!
+[***Desktop Runtime .NET 6 required!***](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.32-windows-x64-installer)
