@@ -1,6 +1,10 @@
 # Skyblock bazzar Tracker
 ![Dotnet badge](https://github.com/nadav26740/Skyblock-Bazzar-Tracker/actions/workflows/dotnet.yml/badge.svg)
-![Version](https://img.shields.io/badge/Version-0.2.5-blue)
+[![Version](https://img.shields.io/badge/Version-0.2.5-blue)](https://github.com/nadav26740/Skyblock-Bazzar-Tracker/releases)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/nadav26740/Skyblock-Bazzar-Tracker)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/nadav26740/Skyblock-Bazzar-Tracker/total)
+<br/>
+<br/>
 ![image_2024-07-06_162134593](https://github.com/nadav26740/Skyblock-Bazzar-Tracker/assets/46380330/b958b29d-dc9f-40d5-adc9-4859324ba476)
 
 Simple system to help you track your current profit in Bazzar flips on the Skyblock Hypixel
