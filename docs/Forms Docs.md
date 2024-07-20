@@ -8,3 +8,11 @@
 > * LiveCharts.Wpf.NetCore3
 > * Newtonsoft.Json
 
+
+## Main Window
+
+## Save Window
+
+## Load Window
+
+## Search Window
