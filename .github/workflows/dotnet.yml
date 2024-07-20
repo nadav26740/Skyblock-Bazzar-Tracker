@@ -6,8 +6,10 @@ name: Tracker Core Aprroving
 on:
   push:
     branches: [ "master" ]
+    paths: ["Skyblock Bazzar Tracker/**", "Tracker_Unittests/**"]
   pull_request:
     branches: [ "master" ]
+    paths: ["Skyblock Bazzar Tracker/**", "Tracker_Unittests/**"]
 
 jobs:
   build:
