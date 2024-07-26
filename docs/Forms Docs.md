@@ -10,6 +10,8 @@
 
 
 ## Main Window
+> Main using LiveCharts1 for the graphs
+
 
 ## Save Window
 
