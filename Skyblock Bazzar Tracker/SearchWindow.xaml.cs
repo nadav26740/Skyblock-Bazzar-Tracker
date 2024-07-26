@@ -107,7 +107,18 @@ namespace Skyblock_Bazzar_Tracker
 
         private void _Item_has_Been_selected()
         {
-            key_selected = keys_dict[(List_view.SelectedItem as string).ToLower()];
+            if (List_view.Items.Count == 0)
+                return;
+
+            if (List_view.SelectedItem != null)
+            {
+                key_selected = keys_dict[(List_view.SelectedItem as string).ToLower()];
+            }
+            else
+            {
+                key_selected = keys_dict[(List_view.Items[0] as string).ToLower()];
+
+            }
             DialogResult = true;
             this.Close();
 
