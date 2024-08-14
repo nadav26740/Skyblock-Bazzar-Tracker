@@ -1,5 +1,5 @@
 # Skyblock bazzar Tracker
-
+![Code Factor](https://www.codefactor.io/repository/github/nadav26740/skyblock-bazzar-tracker/badge)
 ![image_2024-06-20_111623665](https://github.com/nadav26740/Skyblock-Bazzar-Tracker/assets/46380330/40637bfc-c3db-4182-95b4-1ed4569958e2)
 
 Simple system to help you track your current profit in Bazzar flips on the Skyblock Hypixel
