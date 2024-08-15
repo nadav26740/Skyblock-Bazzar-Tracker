@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -90,7 +90,6 @@ namespace Skyblock_Bazzar_Tracker
                 try
                 {
                     this.Close();
-
                 }
                 catch (Exception excep)
                 {
@@ -117,11 +116,9 @@ namespace Skyblock_Bazzar_Tracker
             else
             {
                 key_selected = keys_dict[(List_view.Items[0] as string).ToLower()];
-
             }
             DialogResult = true;
             this.Close();
-
         }
 
 
@@ -137,8 +134,6 @@ namespace Skyblock_Bazzar_Tracker
                     _Item_has_Been_selected();
                     break;
             }
-            
-
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
