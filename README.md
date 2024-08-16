@@ -9,7 +9,7 @@
 
   ![CSharp image](https://ziadoua.github.io/m3-Markdown-Badges/badges/CSharp/csharp1.svg)
   ![dotnet image](https://ziadoua.github.io/m3-Markdown-Badges/badges/dotNET/dotnet1.svg)
-  ![License](https://ziadoua.github.io/m3-Markdown-Badges/badges/LicenceGPLv3/licencegplv31.svg)
+  [![License](https://ziadoua.github.io/m3-Markdown-Badges/badges/LicenceGPLv3/licencegplv31.svg)](./LICENSE.txt)
   <!--Badges From https://github.com/ziadOUA/m3-Markdown-Badges-->
   
 </div>
