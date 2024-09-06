@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Skyblock_Bazzar_Tracker" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
-        mc:Ignorable="d" Background="#FF414E42" AllowsTransparency="True" WindowStyle="None"
+        mc:Ignorable="d" Background="#FF414E42" AllowsTransparency="True" WindowStyle="None" KeyDown="Window_KeyDown" MouseDown="Window_MouseDown"
         Title="SearchWindow" Height="300" Width="600">
     <Grid>
         <Grid.RowDefinitions>
@@ -28,7 +28,7 @@
             <TextBox x:Name="search_box" Background="Transparent" Grid.Column="1"
                      Margin="0,5" FontSize="26" FontWeight="Light" 
                      Foreground="Snow" VerticalAlignment="Center"
-                     BorderThickness="0" TextChanged="search_box_TextChanged"/>
+                     BorderThickness="0" TextChanged="search_box_TextChanged" UndoLimit="10"/>
         </Grid>
         <ListView Grid.Row="1" Background="Transparent" BorderBrush="#FF4A615F"
                   x:Name="List_view" FontSize="20" Foreground="Snow" Margin="20,0"
