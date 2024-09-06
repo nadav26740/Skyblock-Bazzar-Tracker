@@ -1,4 +1,4 @@
-﻿using LiveCharts;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -12,7 +12,6 @@ namespace Skyblock_Bazzar_Tracker
     /// </summary>
     public partial class MainWindow : Window
     {
-
         // columns variables
         public SeriesCollection Column_SeriesCollection { get; set; }
         public string[] Column_Labels { get; set; }
@@ -69,10 +68,9 @@ namespace Skyblock_Bazzar_Tracker
                 Fill = new BrushConverter().ConvertFrom("#5FF8A725") as SolidColorBrush,
                 Stroke = new BrushConverter().ConvertFrom("#FFF8A725") as SolidColorBrush,
                 StrokeThickness = 2
-
             });
 
-            Column_Labels = new string[0];
+            Column_Labels = Array.Empty<string>();
             //also adding values updates and animates the chart automatically
             Column_Formatter = value => value.ToString("N");
             Balance_Gauge.LabelFormatter = value => value.ToString() + "%";
@@ -119,7 +117,6 @@ namespace Skyblock_Bazzar_Tracker
                 window_dialog.Owner = this;
                 window_dialog.ShowDialog();
             }
-
         }
 
         private void Reload_function(object timer_obj)
