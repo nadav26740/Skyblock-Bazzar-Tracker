@@ -1,0 +1,38 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Tracker Core Aprroving
+
+on:
+  push:
+    branches: [ "master" ]
+    paths: ["Skyblock Bazzar Tracker/**", "Tracker_Unittests/**"]
+  pull_request:
+    branches: [ "master" ]
+    paths: ["Skyblock Bazzar Tracker/**", "Tracker_Unittests/**"]
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build "Skyblock Bazzar Tracker/Skyblock Bazzar Tracker.csproj" -c Release -f:net6.0-windows --no-restore
+  
+  unittests:
+    name: Running Unit tests
+    needs: build
+
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Running UnitTest Tracker_Unittests
+        run: dotnet test .\Tracker_Unittests\Tracker_Unittests.csproj -c:Release -f:net6.0-windows -l "console;verbosity=normal"

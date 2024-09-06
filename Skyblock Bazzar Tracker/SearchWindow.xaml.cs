@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -21,6 +22,13 @@ namespace Skyblock_Bazzar_Tracker
             this.keys_dict = keys_dict;
 
             Closed += (object sender, EventArgs e) => { isClosed = true; };
+            Loaded += _RunOnLoad;
+        }
+
+
+        private void _RunOnLoad(object sender, RoutedEventArgs args)
+        {
+            search_box.Focus();
         }
 
         private void search_box_TextChanged(object sender, TextChangedEventArgs e)
@@ -79,16 +87,65 @@ namespace Skyblock_Bazzar_Tracker
             base.OnDeactivated(e);
             if (!this.IsMouseOver)
             {
-                this.Close();
+                try
+                {
+                    this.Close();
+                }
+                catch (Exception excep)
+                {
+                    Debug.WriteLine(excep.Message);
+                }
                 Debug.WriteLine("Search Window Lost Focus");
             }
         }
 
         private void List_view_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            key_selected = keys_dict[((sender as ListView).SelectedItem as string).ToLower()];
+            _Item_has_Been_selected();   
+        }
+
+        private void _Item_has_Been_selected()
+        {
+            if (List_view.Items.Count == 0)
+                return;
+
+            if (List_view.SelectedItem != null)
+            {
+                key_selected = keys_dict[(List_view.SelectedItem as string).ToLower()];
+            }
+            else
+            {
+                key_selected = keys_dict[(List_view.Items[0] as string).ToLower()];
+            }
             DialogResult = true;
             this.Close();
+        }
+
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            Debug.WriteLine($"[search window] {e.Key.ToString()} key pressed");
+            switch (e.Key )
+            {
+                case Key.Escape:
+                    this.Close();
+                    break;
+                case Key.Enter:
+                    _Item_has_Been_selected();
+                    break;
+            }
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Debug.WriteLine("[Search Window] mouse has been pressed ");
+          /// logging the st
+            base.OnDeactivated(e);
+            if (!this.IsMouseOver)
+            {
+                this.Close();
+                Debug.WriteLine("Search Window Lost Focus");
+            }
         }
     }
 }
