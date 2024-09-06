@@ -7,5 +7,4 @@ the software getting the current price from what it already picked from the [API
 
 # **Documantations Navigation**
 ## ***[API Documantation](./API%20Docs.md)***
-## ***[Forms Documantation](./Forms%20Docs.md) (W.I.P)***
-## *Search Box Documantation (W.I.P)*
+## ***[Windows Documantation](./Forms%20Docs.md)***
