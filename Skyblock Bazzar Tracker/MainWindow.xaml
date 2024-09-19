@@ -362,7 +362,7 @@
                     <Border Background="{StaticResource Frames_background}" Margin="10" CornerRadius="35" 
                         BorderThickness="5" BorderBrush="{StaticResource Frames_border_color}" Grid.Row="1">
                         <Label VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="150" Content="W.I.P" Foreground="Snow"
+                               FontSize="55" Content="Market Prediction!" Foreground="Snow"
                                FontWeight="Bold"/>
                     </Border>
                     <!--#endregion-->
