@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace Skyblock_Bazzar_Tracker
 {
-    class Api_Connector
+    public class Api_Connector
     {
         string api_key = "";
         public Api_Connector(string api_key = "")

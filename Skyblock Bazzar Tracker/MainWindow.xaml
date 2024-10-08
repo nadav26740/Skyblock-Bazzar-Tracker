@@ -229,7 +229,7 @@
                 <Border Grid.Column="2" CornerRadius="10" BorderBrush="{StaticResource OnlineLinearColor}"
                         Height="35" HorizontalAlignment="Center" Width="250"
                         BorderThickness="2" x:Name="Connection_status_border">
-                    <Label Content="Status: Online" FontSize="16" FontWeight="Bold"
+                    <Label Content="Status: Connecting" FontSize="16" FontWeight="Bold"
                            HorizontalAlignment="Center" Foreground="{StaticResource OnlineLinearColor}"
                            x:Name="Connection_status_label"/>
 
