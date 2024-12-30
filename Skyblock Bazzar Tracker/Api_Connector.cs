@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http;
 
@@ -40,7 +40,6 @@ namespace Skyblock_Bazzar_Tracker
             Debug.WriteLine("Found dictonery size: " + answer_json.products.Count);
 
             return answer_json.products;
-
         }
     }
 }

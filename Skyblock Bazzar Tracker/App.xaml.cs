@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 
 namespace Skyblock_Bazzar_Tracker
 {
@@ -8,5 +8,4 @@ namespace Skyblock_Bazzar_Tracker
     public partial class App : Application
     {
     }
-
 }
