@@ -15,7 +15,6 @@ namespace Tracker_Unittests
             Assert.IsNotNull(prod_dict);
 
             Assert.IsTrue(prod_dict.ContainsKey("STOCK_OF_STONKS"));
-
         }
     }
 }
